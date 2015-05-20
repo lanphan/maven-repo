@@ -1,0 +1,23 @@
+GUIDE TO USE GITHUB AS MAVEN REPO
+=================================
+
+Link: http://kwebble.com/blog/2014/02/19/use-github-to-host-your-own-maven-repo
+
+Main steps:
+1/ Install Jar into local Git project:
+mvn install:install-file
+ -DgroupId=[group-id]
+ -DartifactId=[artifact-id]
+ -Dversion=[version]
+ -Dpackaging=[packaging-format]
+ -Dfile=[path-to-file]
+ -DlocalRepositoryPath=[path-to-git-repo]
+
+2/ Commit and publish to Github
+
+3/ Ready to be used by any POM with content about repositories below:
+<repository>
+    <id>git-[username]</id>
+    <name>[username]'s Git based repo</name>
+    <url>https://github.com/[username]/[repo-name]/raw/master/</url>
+</repository>
